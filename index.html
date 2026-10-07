@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eko Hustle V7 - Lagos Life Sim</title>
+<style>
+body{background:#0a0a0a;color:#fff;font-family:Arial;padding:20px;text-align:center}
+button{padding:15px 25px;margin:8px;background:#ffcc00;color:#000;border:none;border-radius:10px;font-weight:bold;font-size:16px}
+#game{max-width:500px;margin:auto;background:#1a1a1a;padding:20px;border-radius:15px}
+.stat{display:flex;justify-content:space-between;background:#222;padding:10px;margin:5px;border-radius:8px}
+</style>
+</head>
+<body>
+<div id="game">
+<h1>🌴 EKO HUSTLE V7 🌴</h1>
+<p>Real Lagos Life Sim - Get job, marry, born pikin!</p>
+<div class="stat"><span>💰 Cash:</span><span id="cash">₦5,000</span></div>
+<div class="stat"><span>💼 Job:</span><span id="job">Jobless</span></div>
+<div class="stat"><span>❤️ Level:</span><span id="level">1 - Area Boy</span></div>
+<div id="story">You just land Lagos with 5k. Omo Eko! Wetin you wan do?</div>
+<br>
+<button onclick="work()">Work - Danfo Conductor (₦2k)</button>
+<button onclick="yahoo()">Try Hustle (₦5k Risk)</button>
+<button onclick="marry()">Find Babe - Marry</button>
+<button onclick="police()">Run from Police!</button>
+<script>
+let cash=5000,level=1;
+let jobs=["Jobless","Danfo Conductor","Okada Rider","Yahoo Boy","Shop Owner","Big Man"];
+function update(){document.getElementById('cash').innerText='₦'+cash.toLocaleString();document.getElementById('level').innerText=level+' - '+jobs[Math.min(level-1,5)]}
+function work(){cash+=2000;level++;document.getElementById('story').innerText='You hustle for Oshodi! You make ₦2k. Eko oni baje!';update()}
+function yahoo
