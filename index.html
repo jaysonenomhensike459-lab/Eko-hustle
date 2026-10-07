@@ -3,30 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Eko Hustle V7 - Lagos Life Sim</title>
+<title>Eko Hustle V7</title>
 <style>
-body{background:#0a0a0a;color:#fff;font-family:Arial;padding:20px;text-align:center}
-button{padding:15px 25px;margin:8px;background:#ffcc00;color:#000;border:none;border-radius:10px;font-weight:bold;font-size:16px}
+body{background:#0a0a0a;color:#fff;font-family:Arial;padding:15px;text-align:center}
+button{padding:18px;margin:10px;width:90%;max-width:300px;background:#ffcc00;color:#000;border:0;border-radius:12px;font-weight:bold;font-size:18px}
+button:active{background:#ff9900;transform:scale(0.95)}
 #game{max-width:500px;margin:auto;background:#1a1a1a;padding:20px;border-radius:15px}
-.stat{display:flex;justify-content:space-between;background:#222;padding:10px;margin:5px;border-radius:8px}
+.stat{display:flex;justify-content:space-between;background:#222;padding:10px;margin:6px 0;border-radius:8px}
 </style>
 </head>
 <body>
 <div id="game">
 <h1>🌴 EKO HUSTLE V7 🌴</h1>
-<p>Real Lagos Life Sim - Get job, marry, born pikin!</p>
 <div class="stat"><span>💰 Cash:</span><span id="cash">₦5,000</span></div>
 <div class="stat"><span>💼 Job:</span><span id="job">Jobless</span></div>
-<div class="stat"><span>❤️ Level:</span><span id="level">1 - Area Boy</span></div>
-<div id="story">You just land Lagos with 5k. Omo Eko! Wetin you wan do?</div>
-<br>
-<button onclick="work()">Work - Danfo Conductor (₦2k)</button>
-<button onclick="yahoo()">Try Hustle (₦5k Risk)</button>
-<button onclick="marry()">Find Babe - Marry</button>
-<button onclick="police()">Run from Police!</button>
+<div class="stat"><span>❤️ Level:</span><span id="lvl">1</span></div>
+<div id="story" style="margin:15px 0">You land Lagos with 5k. Wetin you wan do?</div>
+<button id="b1">Work - Danfo (₦2k)</button>
+<button id="b2">Try Hustle (₦5k Risk)</button>
+<button id="b3">Find Babe - Marry</button>
+<button id="b4">Run from Police!</button>
+</div>
 <script>
 let cash=5000,level=1;
-let jobs=["Jobless","Danfo Conductor","Okada Rider","Yahoo Boy","Shop Owner","Big Man"];
-function update(){document.getElementById('cash').innerText='₦'+cash.toLocaleString();document.getElementById('level').innerText=level+' - '+jobs[Math.min(level-1,5)]}
-function work(){cash+=2000;level++;document.getElementById('story').innerText='You hustle for Oshodi! You make ₦2k. Eko oni baje!';update()}
-function yahoo
+function upd(){document.getElementById('cash').innerHTML='₦'+cash.toLocaleString();document.getElementById('lvl').innerHTML=level}
+function work(){cash+=2000;level++;document.getElementById('story').innerHTML='You hustle for Oshodi! +₦2k!';upd()}
+function hustle(){if(Math.random()>0.5){cash+=5000;document.getElementById('story').innerHTML='HUSTLE PAY! 💸💸'}else{cash=Math.max(0,cash-2000);document.getElementById('story').innerHTML='Agbero collect your money! 😭'}upd()}
+function marry(){if(cash>=10000){cash-=5000;level+=2;document.getElementById('story').innerHTML='You don marry! 👶❤️'}else{document.getElementById('story').innerHTML='Need 10k to marry!'}upd()}
+function police(){cash+=1000;document.getElementById('story').innerHTML='You RUN! 🏃‍♂️ Escape +₦1k!';upd()}
+document.getElementById('b1').onclick=work;
+document.getElementById('b2').onclick=hustle;
+document.getElementById('b3').onclick=marry;
+document.getElementById('b4').onclick=police;
+upd();
+</script>
+</body>
+  </html>
